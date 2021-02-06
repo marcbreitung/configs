@@ -119,6 +119,13 @@ if executable('rls')
         \ })
 endif 
 
+" TypeScript server
+let g:completor_tsserver_binary='/usr/local/bin/tsserver'
+noremap <silent> <leader>d :call completor#do('definition')<CR>
+noremap <silent> <leader>c :call completor#do('doc')<CR>
+noremap <silent> <leader>f :call completor#do('format')<CR>
+noremap <silent> <leader>s :call completor#do('hover')<CR>
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -141,6 +148,9 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
+Plug 'maralla/completor.vim'
+Plug 'maralla/completor-typescript'
+Plug 'jiangmiao/auto-pairs'
 
 " Initialize plugin system
 call plug#end()
