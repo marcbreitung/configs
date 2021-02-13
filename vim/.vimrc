@@ -103,6 +103,9 @@ set cursorline
 " Spell check
 set spell
 
+" UTF-8
+set encoding=utf-8
+
 " Rust Plugin enable
 syntax enable
 filetype plugin indent on
