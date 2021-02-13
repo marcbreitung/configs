@@ -99,9 +99,9 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " Highlight the current line
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=16 ctermfg=white guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=16 ctermfg=white guibg=darkred guifg=white
-nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
+" Spell check
+set spell
 
 " Rust Plugin enable
 syntax enable
