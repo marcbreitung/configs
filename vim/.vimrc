@@ -135,16 +135,6 @@ noremap <silent> <leader>c :call completor#do('doc')<CR>
 noremap <silent> <leader>f :call completor#do('format')<CR>
 noremap <silent> <leader>s :call completor#do('hover')<CR>
 
-
-" gutentags settings
-let g:gutentags_cache_dir = '~/.vim/gutentags'
-let g:gutentags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
-                            \ '*.phar', '*.ini', '*.rst', '*.md',
-                            \ '*vendor/*/test*', '*vendor/*/Test*',
-                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
-                            \ '*var/cache*', '*var/log*']
-
-
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -188,9 +178,6 @@ Plug 'shawncplus/phpcomplete.vim'
 
 " Typo3
 Plug 'elmar-hinz/vim.typoscript'
-
-" Ctags
-Plug 'ludovicchabant/vim-gutentags'
 
 " Initialize plugin system
 call plug#end()
