@@ -117,3 +117,7 @@ export PATH="/usr/local/opt/krb5/sbin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 set -o vi
+
+export PROJECTS=$HOME/Documents/Projects
+
+setopt shwordsplit

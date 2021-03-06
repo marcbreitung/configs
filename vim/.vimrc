@@ -1,6 +1,6 @@
 " Comments in Vimscript start with a `"`.
 
-" If you open this file in Vim, it'll be syntax highlighted for you.
+" If you open this file in Vim, it'll be sngeloff/php.vim'yntax highlighted for you.
 
 " Vim is based on Vi. Setting `nocompatible` switches from the default
 " Vi-compatibility mode and enables useful Vim functionality. This
@@ -135,30 +135,62 @@ noremap <silent> <leader>c :call completor#do('doc')<CR>
 noremap <silent> <leader>f :call completor#do('format')<CR>
 noremap <silent> <leader>s :call completor#do('hover')<CR>
 
+
+" gutentags settings
+let g:gutentags_cache_dir = '~/.vim/gutentags'
+let g:gutentags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
+                            \ '*.phar', '*.ini', '*.rst', '*.md',
+                            \ '*vendor/*/test*', '*vendor/*/Test*',
+                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
+                            \ '*var/cache*', '*var/log*']
+
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+" Rust
 Plug 'rust-lang/rust.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'othree/html5.vim'
-Plug 'mattn/emmet-vim'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'leafgarland/typescript-vim'
-Plug 'preservim/nerdtree'
-Plug 'lervag/vimtex'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" Yaml/Toml
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
+
+" JavaScript
+Plug 'pangloss/vim-javascript'
+Plug 'heavenshell/vim-jsdoc'
+
+" Html
+Plug 'othree/html5.vim'
+Plug 'mattn/emmet-vim'
+
+" Typescript
+Plug 'leafgarland/typescript-vim'
 Plug 'maralla/completor.vim'
 Plug 'maralla/completor-typescript'
+
+" Latex
+Plug 'lervag/vimtex'
+
+" System 
 Plug 'jiangmiao/auto-pairs'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" PHP
+Plug 'stanangeloff/php.vim'
+Plug 'shawncplus/phpcomplete.vim'
+
+" Typo3
+Plug 'elmar-hinz/vim.typoscript'
+
+" Ctags
+Plug 'ludovicchabant/vim-gutentags'
 
 " Initialize plugin system
 call plug#end()
