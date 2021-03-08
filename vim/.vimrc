@@ -179,5 +179,9 @@ Plug 'shawncplus/phpcomplete.vim'
 " Typo3
 Plug 'elmar-hinz/vim.typoscript'
 
+" Snippets
+Plug 'honza/vim-snippets'
+
+
 " Initialize plugin system
 call plug#end()
