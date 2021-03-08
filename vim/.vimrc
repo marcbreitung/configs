@@ -135,6 +135,12 @@ noremap <silent> <leader>c :call completor#do('doc')<CR>
 noremap <silent> <leader>f :call completor#do('format')<CR>
 noremap <silent> <leader>s :call completor#do('hover')<CR>
 
+" Snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+" list all snippets for current filetype
+let g:UltiSnipsListSnippets="<c-l>"
+
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -178,10 +184,6 @@ Plug 'shawncplus/phpcomplete.vim'
 
 " Typo3
 Plug 'elmar-hinz/vim.typoscript'
-
-" Snippets
-Plug 'honza/vim-snippets'
-
 
 " Initialize plugin system
 call plug#end()
