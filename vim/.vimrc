@@ -100,8 +100,9 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " Highlight the current line
 set cursorline
 
+
 " Spell check
-set spell
+" set spell
 
 " UTF-8
 set encoding=utf-8
@@ -177,6 +178,7 @@ Plug 'lervag/vimtex'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'doums/darcula'
 
 " PHP
 Plug 'stanangeloff/php.vim'
@@ -187,3 +189,8 @@ Plug 'elmar-hinz/vim.typoscript'
 
 " Initialize plugin system
 call plug#end()
+
+" Colorscheme
+colorscheme darcula
+
+
