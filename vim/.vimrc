@@ -1,6 +1,6 @@
 " Comments in Vimscript start with a `"`.
 
-" If you open this file in Vim, it'll be sngeloff/php.vim'yntax highlighted for you.
+" If you open this file in Vim, it'll be syntax highlighted for you.
 
 " Vim is based on Vi. Setting `nocompatible` switches from the default
 " Vi-compatibility mode and enables useful Vim functionality. This
@@ -100,97 +100,42 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " Highlight the current line
 set cursorline
 
-
-" Spell check
-" set spell
-
 " UTF-8
 set encoding=utf-8
 
-" Rust Plugin enable
-syntax enable
-filetype plugin indent on
-
-" Javascript plugin settings
-let g:javascript_plugin_jsdoc=1
-let g:javascript_plugin_ngdoc=1
-let g:javascript_plugin_flow=1
-
-" Airline Theme
-let g:airline_theme='molokai' 
-let g:airline_powerline_fonts=1
-
-" Rust Language Server (RLS) 
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif 
-
-" TypeScript server
-let g:completor_tsserver_binary='/usr/local/bin/tsserver'
-noremap <silent> <leader>d :call completor#do('definition')<CR>
-noremap <silent> <leader>c :call completor#do('doc')<CR>
-noremap <silent> <leader>f :call completor#do('format')<CR>
-noremap <silent> <leader>s :call completor#do('hover')<CR>
-
-" Snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-" list all snippets for current filetype
-let g:UltiSnipsListSnippets="<c-l>"
-
-
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-
-" Rust
+" Languages
 Plug 'rust-lang/rust.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-" Yaml/Toml
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 
-" JavaScript
-Plug 'pangloss/vim-javascript'
-Plug 'heavenshell/vim-jsdoc'
+" Fuzzy finder
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-" Html
-Plug 'othree/html5.vim'
-Plug 'mattn/emmet-vim'
+" System
+Plug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'maralla/completor.vim'
-Plug 'maralla/completor-typescript'
-
-" Latex
-Plug 'lervag/vimtex'
-
-" System 
-Plug 'jiangmiao/auto-pairs'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'doums/darcula'
-
-" PHP
-Plug 'stanangeloff/php.vim'
-Plug 'shawncplus/phpcomplete.vim'
-
-" Typo3
-Plug 'elmar-hinz/vim.typoscript'
-
-" Initialize plugin system
+" ui/ux
+Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
-" Colorscheme
-colorscheme darcula
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
 
+set background=dark
+colorscheme gruvbox
+
+" rust
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
