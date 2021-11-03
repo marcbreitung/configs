@@ -103,16 +103,72 @@ set cursorline
 " UTF-8
 set encoding=utf-8
 
+" -------------
+" coc vim
+" -------------
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" -------------
+
+" -------------
+" FZF
+" -------------
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \}
+" -------------
+
 call plug#begin('~/.vim/plugged')
+
 " Languages
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
+Plug 'leafgarland/typescript-vim'
+Plug 'quramy/tsuquyomi'
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Tools
+Plug 'mattn/emmet-vim'
+Plug 'majutsushi/tagbar'
 
 " System
 Plug 'vim-syntastic/syntastic'
@@ -121,8 +177,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ui/ux
 Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
+
 call plug#end()
 
+" Syntastic error checks
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -131,6 +189,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 
+" Theme settings
 set background=dark
 colorscheme gruvbox
 
@@ -139,3 +198,4 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
+
