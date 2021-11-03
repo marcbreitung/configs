@@ -103,6 +103,8 @@ set cursorline
 " UTF-8
 set encoding=utf-8
 
+filetype plugin indent on
+
 " -------------
 " coc vim
 " -------------
@@ -199,3 +201,5 @@ let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
 
+" tagbar toggle with F8
+nnoremap <silent> <F8> :TagbarToggle<CR>
