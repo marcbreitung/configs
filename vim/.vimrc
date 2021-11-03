@@ -175,6 +175,7 @@ Plug 'majutsushi/tagbar'
 " System
 Plug 'vim-syntastic/syntastic'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
 
 " ui/ux
 Plug 'itchyny/lightline.vim'
@@ -203,3 +204,6 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 
 " tagbar toggle with F8
 nnoremap <silent> <F8> :TagbarToggle<CR>
+
+" git gutter
+nnoremap <silent> <F7> :GitGutterToggle<CR>
