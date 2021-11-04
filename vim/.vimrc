@@ -176,6 +176,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-syntastic/syntastic'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " ui/ux
 Plug 'itchyny/lightline.vim'
@@ -207,3 +208,15 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 
 " git gutter
 nnoremap <silent> <F7> :GitGutterToggle<CR>
+
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ 
+  \     ['mode', 'paste'], 
+  \     ['gitbranch', 'readonly', 'filename', 'modified']
+  \   ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead'
+  \ },
+  \ }
