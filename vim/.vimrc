@@ -1,6 +1,34 @@
-" Comments in Vimscript start with a `"`.
+" Plugins
+call plug#begin('~/.vim/plugged')
 
-" If you open this file in Vim, it'll be syntax highlighted for you.
+" Languages
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'stephpy/vim-yaml'
+Plug 'leafgarland/typescript-vim'
+Plug 'quramy/tsuquyomi'
+
+" Fuzzy finder
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Tools
+Plug 'mattn/emmet-vim'
+Plug 'majutsushi/tagbar'
+
+" System
+Plug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" ui/ux
+Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
+
+call plug#end()
 
 " Vim is based on Vi. Setting `nocompatible` switches from the default
 " Vi-compatibility mode and enables useful Vim functionality. This
@@ -154,36 +182,6 @@ let g:fzf_action = {
   \}
 " -------------
 
-call plug#begin('~/.vim/plugged')
-
-" Languages
-Plug 'rust-lang/rust.vim'
-Plug 'cespare/vim-toml'
-Plug 'stephpy/vim-yaml'
-Plug 'leafgarland/typescript-vim'
-Plug 'quramy/tsuquyomi'
-
-" Fuzzy finder
-Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" Tools
-Plug 'mattn/emmet-vim'
-Plug 'majutsushi/tagbar'
-
-" System
-Plug 'vim-syntastic/syntastic'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neovim/nvim-lspconfig'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" ui/ux
-Plug 'itchyny/lightline.vim'
-Plug 'morhetz/gruvbox'
-
-call plug#end()
 
 " Syntastic error checks
 set statusline+=%#warningmsg#
@@ -208,7 +206,7 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 " tagbar toggle with F8
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
-" git gutter
+" git gutter with F7
 nnoremap <silent> <F7> :GitGutterToggle<CR>
 
 let g:lightline = {
@@ -281,4 +279,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 EOF
-  
