@@ -16,6 +16,7 @@ Plug 'junegunn/fzf.vim'
 " Tools
 Plug 'mattn/emmet-vim'
 Plug 'majutsushi/tagbar'
+Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'scss', 'html', 'json', 'markdown', 'yaml']}
 
 " System
 Plug 'vim-syntastic/syntastic'
@@ -29,6 +30,10 @@ Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 
 call plug#end()
+
+" set leader to space
+nnoremap <SPACE> <nop>
+let mapleader=" "
 
 " Vim is based on Vi. Setting `nocompatible` switches from the default
 " Vi-compatibility mode and enables useful Vim functionality. This
@@ -124,6 +129,8 @@ set incsearch
 
 " Remove highlight with space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+nnoremap <leader><leader> <c-^>
 
 " Highlight the current line
 set cursorline
