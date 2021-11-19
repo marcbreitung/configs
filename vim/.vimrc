@@ -1,5 +1,4 @@
 " Plugins
-    let name = "Name";
 call plug#begin('~/.vim/plugged')
 
 " Languages
