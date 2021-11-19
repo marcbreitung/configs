@@ -1,4 +1,5 @@
 " Plugins
+    let name = "Name";
 call plug#begin('~/.vim/plugged')
 
 " Languages
@@ -7,6 +8,8 @@ Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'leafgarland/typescript-vim'
 Plug 'quramy/tsuquyomi'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
@@ -16,14 +19,20 @@ Plug 'junegunn/fzf.vim'
 " Tools
 Plug 'mattn/emmet-vim'
 Plug 'majutsushi/tagbar'
-Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'scss', 'html', 'json', 'markdown', 'yaml']}
+Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'typescriptreact', 'css', 'scss', 'html', 'json', 'markdown', 'yaml']}
 
 " System
 Plug 'vim-syntastic/syntastic'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neovim/nvim-lspconfig'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
+Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
+Plug 'hrsh7th/cmp-path', {'branch': 'main'}
+Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+Plug 'ray-x/lsp_signature.nvim'
 
 " ui/ux
 Plug 'itchyny/lightline.vim'
@@ -135,6 +144,13 @@ nnoremap <leader><leader> <c-^>
 " Highlight the current line
 set cursorline
 
+" Netrw
+let g:netrw_banner = 0
+
+" Enable type inlay hints
+autocmd InsertLeave,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+
+
 " UTF-8
 set encoding=utf-8
 
@@ -189,7 +205,6 @@ let g:fzf_action = {
   \}
 " -------------
 
-
 " Syntastic error checks
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -227,7 +242,6 @@ let g:lightline = {
   \   'gitbranch': 'FugitiveHead'
   \ },
   \ }
-  
   
 lua << EOF
 local nvim_lsp = require('lspconfig')
